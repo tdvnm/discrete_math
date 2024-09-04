@@ -1,0 +1,554 @@
+\documentclass[11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[letterpaper,top=0cm, margin=0.85in]{geometry}
+
+\usepackage{textcmds} %more symbols
+\usepackage{fontspec} %more fonts
+
+%for math
+\usepackage{amsmath, amssymb, amsfonts} %standard
+\usepackage{youngtab} % makes squares for math diagrams
+\usepackage{microtype} %% <-- added
+%-----------------------------------------------------------           
+
+%\usepackage{sectsty}
+%for lists and numbers
+\usepackage{enumitem}
+%-----------------------------------------------------------
+
+% Doc setting
+\usepackage[english]{babel} % Replace `english' with e.g. `spanish' to change the document language
+\usepackage{setspace} %to set spacing bw words and lines
+\usepackage{changepage}
+% \setlength\parindent{0pt}
+
+%footer
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+
+\fancyhf{}
+\renewcommand{\footrulewidth}{0.2pt}
+\renewcommand{\headrulewidth}{0pt} %remove headerline
+
+% \fancyfoot[RE,RO]{\thepage}
+\fancyfoot[L]{\textsc{comp201 - shubhro gupta}}
+\fancyfoot[C]{\emph{Bonus Assignment 1}}
+\fancyfoot[R]{\thepage}
+\pagestyle{fancy}
+%-----------------------------------------------------------
+
+%for pictures and graphs
+\usepackage{graphicx} %add image
+\usepackage{adjustbox}
+
+\usepackage{pgfplots} %for graphing plotting
+\pgfplotsset{compat=1.18, width=10cm}
+%-----------------------------------------------------------
+
+%for code
+\usepackage{verbatim}
+\usepackage{listings}
+\usepackage{fancyvrb} %for coding blocks
+%\usepackage{algorithm}
+%\usepackage{algpseudocode} %for pseudocode
+%\usepackage{algorithm, algpseudocode}
+
+%\usepackage{lstfiracode} %firacode
+\usepackage[framemethod=tikz]{mdframed} %adding background to lstlisting
+\usepackage[ruled,vlined,boxed]{algorithm2e} %for pseudocode lines
+
+
+
+%for colors and links
+\usepackage[colorlinks = true,
+            linkcolor = blue,
+            urlcolor  = blue,
+            citecolor = blue,
+            anchorcolor = blue]{hyperref}
+\usepackage[many]{tcolorbox}  % for colored boxes
+\usepackage{color} % to get colors
+\usepackage{xcolor} %more colors options and flexibility
+\usepackage{transparent}
+
+
+%-----------------------------------------------------------------------------
+%custom commands
+
+%code
+\newcommand{\problem
+}[2]{
+\begin{mdframed}
+    Exercise \textbf{#1} \hfill \emph{page. }#2
+\end{mdframed}
+}
+\newcommand{\codecap}[2]{{\vspace{4pt}{\emph{#1}}} \hfill \href{#2}{Link to the code\ }\vspace{25pt}}
+\newcommand{\code}[1]{{\texttt{#1}}}
+
+%math
+\newcommand{\bigo}[1]{$O(#1)$ }
+\newcommand{\thetan}[1]{$\theta(#1)$}
+% \newcommand{\vector}[1]{$\overrightarrow{#1}$}
+
+\newcommand{\vecset}[2]{\{ {#1}_1, {#1}_2, {#1}_3,  \dots,  {#1}_{#2}\}}
+
+%display
+\newcommand{\link}[3][blue]{\href{#2}{\color{#1}{#3}}}%
+\newcommand{\inlink}[1]{\underline{\emph{\link[black]{#1}{#1}}}}
+
+
+%header
+\newcommand{\heading}[5]{
+\begin{large}
+\noindent\emph{#1}\smallskip ~\\
+Professor #3 \hfill Week #2 \smallskip ~\\
+\textbf{Shubhro Gupta} \hfill Due #4 ~\\
+\end{large} \medskip ~\\
+{\emph{Collaborators: #5}}~\\
+\hrule
+\vspace{50pt}
+~\\
+}
+
+% \newcommand\dunderline[3][-1pt]{{%
+%   \sbox0{#3}%
+%   \ooalign{\copy0\cr\rule[\dimexpr#1-#2\relax]{\wd0}{#2}}}}
+
+%new section
+\newcommand{\asec}[1]{{\vspace{20pt}\large\dunderline[-3pt]{1pt}{\textbf{#1}}} ~\\}
+
+
+
+
+%-----------------------------------------------------------------------------
+%title
+\usepackage{algpseudocode}
+\begin{document}
+
+\heading{Discrete Mathematics}{1}{T. V. H. Prathamesh}{15 August, 2024}{none}
+\\
+\problem{1}{2}
+Which of the statements are valid:
+\begin{enumerate}
+	\item If 3 is a prime, then 6 is not a prime.
+	\item If 4 is a prime, then 6 is a prime.
+	\item If 4 is a prime, then 6 is not a prime.
+	\item if 3 is a prime, then 6 is a prime.
+\end{enumerate}
+\textbf{Solution. }
+Here is the truth table for $P \rightarrow Q$
+\begin{center}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		$P$ & $Q$ & $P \rightarrow Q$ \\
+		\hline
+		T   & T   & T                 \\
+		T   & F   & F                 \\
+		F   & T   & T                 \\
+		F   & F   & T                 \\
+		\hline
+	\end{tabular}
+\end{center}
+\vspace{8pt}
+\begin{enumerate}
+	\item $P$ = 3 is a prime, $Q$ = 6 is not a prime. \\
+	      $P \rightarrow Q$ = \textbf{True}, since $P$ is true and $Q$ is true.
+	\item $P$ = 4 is a prime, $Q$ = 6 is a prime. \\
+	      $P \rightarrow Q$ = \textbf{True}, since $P$ is false and $Q$ is false.
+	\item $P$ = 4 is a prime, $Q$ = 6 is not a prime. \\
+	      $P \rightarrow Q$ = \textbf{True}, since $P$ is false and $Q$ is true.
+	\item $P$ = 3 is a prime, $Q$ = 6 is a prime. \\
+	      $P \rightarrow Q$ = \textbf{False}, since $P$ is true and $Q$ is false.
+\end{enumerate}
+
+% \newpage
+\problem{2}{3}
+Assuming capital = Delhi, India, which of the following statements are true:
+\begin{enumerate}
+	\item If Delhi is the capital of India, then the Parliament is in Delhi.
+	\item If Delhi is the capital of India, then Gateway of India is in Delhi.
+	\item If Chennai is the capital of India, then the Parliament is in Delhi.
+	\item If Chennai is the capital of India, then India Gate is in Delhi.
+\end{enumerate}
+\textbf{Solution. }
+\begin{enumerate}
+	\item $P$ = Delhi is the capital of India, $Q$ = Parliament is in Delhi. \\
+	      $P \rightarrow Q$ = \textbf{True}, since $P$ is true and $Q$ is true.
+	\item $P$ = Delhi is the capital of India, $Q$ = Gateway of India is in Delhi. \\
+	      $P \rightarrow Q$ = \textbf{False}, since $P$ is true and $Q$ is false.
+	\item $P$ = Chennai is the capital of India, $Q$ = Parliament is in Delhi. \\
+	      $P \rightarrow Q$ = \textbf{True}, since $P$ is false and $Q$ is true.
+	\item $P$ = Chennai is the capital of India, $Q$ = India Gate is in Delhi. \\
+	      $P \rightarrow Q$ = \textbf{True}, since $P$ is false and $Q$ is true.
+\end{enumerate}
+
+
+\problem{3}{4}
+Negate the following statements:
+\begin{enumerate}
+	\item I am not crying. There are two way of stating this. One way is to state that you are indeed crying, and the other is to state that you are not not crying.
+	\item $p$ is greater than 0. This statement is false, when $p$ is not greater than 0. This is true whenever $p \leq 0$.
+	\item Square of the number $n$ is divisible by a prime.
+	\item We are in the classroom and we are trying to stay awake.
+	\item  We are not in the classroom and we are trying to stay awake.
+	\item $x$ is less than 4, and greater than or equal to 5.
+	\item We are in the classroom or we are trying to stay awake.
+	\item If I am in the classroom, then I am trying to stay awake.
+	\item I am trying to stay awake because I am in the classroom.
+	\item If $p$ is an odd number, then 2 does not divide $p$.
+	\item 4 does not divide $p$, because $p$ is not a prime.
+\end{enumerate}
+\textbf{Solution. }
+\begin{enumerate}
+	\item I am crying.
+	\item $p \leq 0$.
+	\item Square of the number $n$ is not divisible by a prime.
+	\item We are not in the classroom or we are not trying to stay awake.
+	\item We are in the classroom and we are not trying to stay awake.
+	\item $x$ is not less than 4, or not greater than or equal to 5. ($x \geq 4$ or $x < 5$.)
+	\item We are not in the classroom and we are not trying to stay awake.
+	\item I am in the classroom and I am not trying to stay awake.
+	\item I am not trying to stay awake even though I am in the classroom.
+	\item $p$ is an odd number and 2 divides $p$.
+	\item 4 divides $p$, even though $p$ is not a prime.
+\end{enumerate}
+
+\problem{4}{5}
+Verify their correctness:
+\begin{enumerate}
+	\item $\neg(\neg P) \equiv P$
+	\item $(P \lor Q) \land R \equiv (P \land R) \lor (Q \land R)$
+	\item $(P \land Q) \lor R \equiv (P \lor R) \land (Q \lor R)$
+	\item $P  \rightarrow Q \equiv \neg P \lor Q$
+	\item $(P \rightarrow Q) \equiv (\neg Q \rightarrow \neg P)$
+\end{enumerate}
+\textbf{Solution. }
+\begin{enumerate}
+	\item $\neg(\neg P) \equiv P$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|}
+			      \hline
+			      $P$ & $\neg P$ & $\neg(\neg P)$ & $P$ \\
+			      \hline
+			      T   & F        & T              & T   \\
+			      F   & T        & F              & F   \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements are correct.\qquad $\square$
+
+	\item $(P \lor Q) \land R \equiv (P \land R) \lor (Q \land R)$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $R$ & $P \lor Q$ & $P \land R$ & $Q \land R$ & $(P \lor Q) \land R$ & $(P \land R) \lor (Q \land R)$ \\
+			      \hline
+			      T   & T   & T   & T          & T           & T           & T                    & T                              \\
+			      T   & T   & F   & T          & T           & F           & F                    & F                              \\
+			      T   & F   & T   & T          & T           & F           & T                    & T                              \\
+			      T   & F   & F   & T          & F           & F           & F                    & F                              \\
+			      F   & T   & T   & T          & F           & T           & T                    & T                              \\
+			      F   & T   & F   & T          & F           & F           & F                    & F                              \\
+			      F   & F   & T   & F          & F           & F           & F                    & F                              \\
+			      F   & F   & F   & F          & F           & F           & F                    & F                              \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements are correct.\qquad $\square$
+
+	      \newpage
+	\item $(P \land Q) \lor R \equiv (P \lor R) \land (Q \lor R)$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $R$ & $P \land Q$ & $P \lor R$ & $Q \lor R$ & $(P \land Q) \lor R$ & $(P \lor R) \land (Q \lor R)$ \\
+			      \hline
+			      T   & T   & T   & T           & T          & T          & T                    & T                             \\
+			      T   & T   & F   & T           & T          & T          & T                    & T                             \\
+			      T   & F   & T   & F           & T          & T          & T                    & T                             \\
+			      T   & F   & F   & F           & T          & F          & F                    & F                             \\
+			      F   & T   & T   & F           & T          & T          & T                    & T                             \\
+			      F   & T   & F   & F           & F          & T          & F                    & F                             \\
+			      F   & F   & T   & F           & T          & T          & T                    & T                             \\
+			      F   & F   & F   & F           & F          & F          & F                    & F                             \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements are correct.\qquad $\square$
+
+	\item $P  \rightarrow Q \equiv \neg P \lor Q$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $\neg P$ & $P \rightarrow Q$ & $\neg P \lor Q$ \\
+			      \hline
+			      T   & T   & F        & T                 & T               \\
+			      T   & F   & F        & F                 & F               \\
+			      F   & T   & T        & T                 & T               \\
+			      F   & F   & T        & T                 & T               \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements are correct.\qquad $\square$
+
+	\item $(P \rightarrow Q) \equiv (\neg Q \rightarrow \neg P)$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $P \rightarrow Q$ & $\neg Q$ & $\neg P$ & $\neg Q \rightarrow \neg P$ \\
+			      \hline
+			      T   & T   & T                 & F        & F        & T                           \\
+			      T   & F   & F                 & T        & F        & F                           \\
+			      F   & T   & T                 & F        & T        & T                           \\
+			      F   & F   & T                 & T        & T        & T                           \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements are correct.\qquad $\square$
+
+	\item $(P \rightarrow Q) \equiv (\neg Q \rightarrow \neg P)$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $P \rightarrow Q$ & $\neg Q$ & $\neg P$ & $\neg Q \rightarrow \neg P$ \\
+			      \hline
+			      T   & T   & T                 & F        & F        & T                           \\
+			      T   & F   & F                 & T        & F        & F                           \\
+			      F   & T   & T                 & F        & T        & T                           \\
+			      F   & F   & T                 & T        & T        & T                           \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements are correct.\qquad $\square$
+
+
+
+\end{enumerate}
+
+
+
+\problem{5}{6}
+\begin{itemize}
+	\item $P \vee \neg P$
+	\item $P \rightarrow P$
+	\item $(P \rightarrow Q) \rightarrow(Q \rightarrow R) \rightarrow(P \rightarrow R)$
+	\item $P \wedge Q \rightarrow P$
+	\item $Q \wedge P \rightarrow P$
+	\item $P \rightarrow(P \vee Q)$
+	\item $(P \wedge(P \rightarrow Q)) \rightarrow Q$
+\end{itemize}
+1) Check that the above statements always return the value True, regardless of the variables involved. \\
+
+\textbf{Solution. }
+\begin{enumerate}
+	\item $P \vee \neg P$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|}
+			      \hline
+			      $P$ & $\neg P$ & $P \vee \neg P$ \\
+			      \hline
+			      T   & F        & T               \\
+			      F   & T        & T               \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements always return the value True, regardless of the variables involved.\qquad $\square$
+
+	\item $P \rightarrow P$
+	      \begin{center}
+		      \begin{tabular}{|c|c|}
+			      \hline
+			      $P$ & $P \rightarrow P$ \\
+			      \hline
+			      T   & T                 \\
+			      F   & T                 \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements always return the value True, regardless of the variables involved.\qquad $\square$
+
+	\item $(P \rightarrow Q) \rightarrow(Q \rightarrow R) \rightarrow(P \rightarrow R)$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $R$ & $P \rightarrow Q$ & $Q \rightarrow R$ & $(P \rightarrow Q) \rightarrow(Q \rightarrow R)$ & $(P \rightarrow Q) \rightarrow(Q \rightarrow R) \rightarrow(P \rightarrow R)$ \\
+			      \hline
+			      T   & T   & T   & T                 & T                 & T                                                & T                                                                             \\
+			      T   & T   & F   & T                 & F                 & F                                                & T                                                                             \\
+			      T   & F   & T   & F                 & T                 & T                                                & T                                                                             \\
+			      T   & F   & F   & F                 & T                 & T                                                & T                                                                             \\
+			      F   & T   & T   & T                 & T                 & T                                                & T                                                                             \\
+			      F   & T   & F   & T                 & F                 & F                                                & T                                                                             \\
+			      F   & F   & T   & T                 & T                 & T                                                & T                                                                             \\
+			      F   & F   & F   & T                 & T                 & T                                                & T                                                                             \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements always return the value True, regardless of the variables involved.\qquad $\square$
+
+	\item $P \wedge Q \rightarrow P$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $P \wedge Q$ & $P \wedge Q \rightarrow P$ \\
+			      \hline
+			      T   & T   & T            & T                          \\
+			      T   & F   & F            & T                          \\
+			      F   & T   & F            & T                          \\
+			      F   & F   & F            & T                          \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements always return the value True, regardless of the variables involved.\qquad $\square$
+
+	\item $Q \wedge P \rightarrow P$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $Q \wedge P$ & $Q \wedge P \rightarrow P$ \\
+			      \hline
+			      T   & T   & T            & T                          \\
+			      T   & F   & F            & T                          \\
+			      F   & T   & F            & T                          \\
+			      F   & F   & F            & T                          \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements always return the value True, regardless of the variables involved.\qquad $\square$
+
+	\item $P \rightarrow(P \vee Q)$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $P \vee Q$ & $P \rightarrow(P \vee Q)$ \\
+			      \hline
+			      T   & T   & T          & T                         \\
+			      T   & F   & T          & T                         \\
+			      F   & T   & T          & T                         \\
+			      F   & F   & F          & T                         \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+	      The truth table shows that the statements always return the value True, regardless of the variables involved.\qquad $\square$
+
+	\item $(P \wedge(P \rightarrow Q)) \rightarrow Q$
+	      \begin{center}
+		      \begin{tabular}{|c|c|c|c|c|}
+			      \hline
+			      $P$ & $Q$ & $P \rightarrow Q$ & $P \wedge(P \rightarrow Q)$ & $(P \wedge(P \rightarrow Q)) \rightarrow Q$ \\
+			      \hline
+			      T   & T   & T                 & T                           & T                                           \\
+			      T   & F   & F                 & F                           & T                                           \\
+			      F   & T   & T                 & F                           & T                                           \\
+			      F   & F   & T                 & F                           & T                                           \\
+			      \hline
+		      \end{tabular}
+	      \end{center}
+\end{enumerate}
+
+The truth table shows that the statements always return the value True, regardless of the variables involved.\qquad $\square$
+
+\vspace{10pt}
+\noindent 2) Write 2 sentences corresponding to last of the tautologies listed.\\
+\textbf{Solution. }
+\noindent $(P \wedge(P \rightarrow Q)) \rightarrow Q$ is a tautology. This means that if $P$ is true and $P$ implies $Q$, then $Q$ is true.
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|}
+		\hline
+		$P$ & $Q$ & $P \rightarrow Q$ & $P \wedge(P \rightarrow Q)$ & $(P \wedge(P \rightarrow Q)) \rightarrow Q$ \\
+		\hline
+		T   & T   & T                 & T                           & T                                           \\
+		T   & F   & F                 & F                           & T                                           \\
+		F   & T   & T                 & F                           & T                                           \\
+		F   & F   & T                 & F                           & T                                           \\
+		\hline
+	\end{tabular}
+\end{center}
+
+\noindent Another tautology is $(P \land Q) \lor (\neg P \lor \neg Q)$.
+\begin{center}
+	\begin{tabular}{|c|c|c|c|c|c|c|}
+		\hline
+		$P$ & $Q$ & $\neg P$ & $\neg Q$ & $P \land Q$ & $\neg P \lor \neg Q$ & $(P \land Q) \lor (\neg P \lor \neg Q)$ \\
+		\hline
+		T   & T   & F        & F        & T           & F                    & T                                       \\
+		T   & F   & F        & T        & F           & T                    & T                                       \\
+		F   & T   & T        & F        & F           & T                    & T                                       \\
+		F   & F   & T        & T        & F           & T                    & T                                       \\
+		\hline
+	\end{tabular}
+\end{center}
+
+
+
+\problem{6}{9 - 10}
+Negate the following statements:
+\begin{enumerate}
+	\item $\forall x.P(x)$
+	\item $\exists x.P(x)$
+	\item $\forall x. \exists y. x < y$
+	\item $\exists y. \forall x. x < y$
+	\item $\forall \epsilon . \exists \delta .(x-y<\delta) \Longrightarrow(f(x)-f(y))<\epsilon$
+\end{enumerate}
+
+\textbf{Solution. }
+\begin{enumerate}
+	\item $\neg(\forall x.P(x)) \equiv \exists x.\neg P(x)$
+	\item $\neg(\exists x.P(x)) \equiv \forall x.\neg P(x)$
+	\item $\neg(\forall x. \exists y. x < y) \equiv \exists x. \forall y. x \geq y$
+	\item $\neg(\exists y. \forall x. x < y) \equiv \forall y. \exists x. x \geq y$
+	\item $\neg(\forall \epsilon . \exists \delta .(x-y<\delta) \Longrightarrow(f(x)-f(y))<\epsilon) \equiv \exists \epsilon . \forall \delta .(x-y<\delta) \land (f(x)-f(y)) \geq \epsilon$ \\ \emph{(I have some doubts regarding this, I will probably get an office hours with you to clear them)}.
+\end{enumerate}
+
+
+\problem{7}{12}
+\begin{enumerate}
+	\item $\exists x.  (P(x)  \land Q(x)) \neq ((\exists x. P(x)) \land (\exists x. Q(x))).$
+	\item $\exists x. (P(x) \lor Q(x)) = ((\exists x.P(x)) \lor (\exists x.Q(x))).$
+\end{enumerate}
+
+\textbf{Solution. }
+\begin{enumerate}
+	\item $\exists x.  (P(x)  \land Q(x)) \neq ((\exists x. P(x)) \land (\exists x. Q(x))).$\\
+	      Let's start by breaking down the statements.\\
+	      \emph{LHS. } $\exists x.  (P(x)  \land Q(x))$ means that ``There exists an $x$ such that $P(x)$ and $Q(x)$ are true.'' \\ \emph{Example .} If $P(x)$ is ``$x$ is stupid'' and $Q(x)$ is ``$x$ is a genius'', then $\exists x.  (P(x)  \land Q(x))$ means that ``There exists an $x$ such that the person is both stupid and a genius.''\bigskip
+	      \\
+	      \noindent \emph{RHS. } $((\exists x. P(x)) \land (\exists x. Q(x)))$ means that ``There exists an $x$ such that $P(x)$ is true and there exists an $x$ such that $Q(x)$ is true.''\\ \emph{Example .} If $P(x)$ is ``$x$ is stupid'' and $Q(x)$ is ``$x$ is a genius'', then $((\exists x. P(x)) \land (\exists x. Q(x)))$ means that ``There exists an $x$ such that the person is stupid and there exists (another) $x$ such that the person is a genius.''\\
+	      \\
+	      Since we found a counterexample, the statement is false.\\
+
+	\item $\exists x. (P(x) \lor Q(x)) = ((\exists x.P(x)) \lor (\exists x.Q(x))).$
+	      \\
+	      \emph{LHS. } $\exists x. (P(x) \lor Q(x))$ means that ``There exists an $x$ such that $P(x)$ or $Q(x)$ is true.'' \\ \emph{Example .} If $P(x)$ is ``$x$ is stupid'' or $Q(x)$ is ``$x$ is a genius'', then $\exists x. (P(x) \lor Q(x))$ means that ``There exists an $x$ such that the person is either stupid or a genius.''\bigskip
+	      \\
+	      \noindent \emph{RHS. } $((\exists x. P(x)) \lor (\exists x. Q(x)))$ means that ``There exists an $x$ such that $P(x)$ is true or there exists an $x$ such that $Q(x)$ is true.''\\ \emph{Example .} If $P(x)$ is ``$x$ is stupid'' and $Q(x)$ is ``$x$ is a genius'', then $((\exists x. P(x)) \lor (\exists x. Q(x)))$ means that ``There exists an $x$ such that the person is stupid or there exists (another) $x$ such that the person is a genius.''\\
+	      \\
+	      We have to show that \emph{LHS} $\implies$ \emph{RHS} and \emph{RHS} $\implies$ \emph{LHS}, i.e., $\exists x. (P(x) \lor Q(x)) \implies ((\exists x.P(x)) \lor (\exists x.Q(x))$ and $((\exists x.P(x)) \lor (\exists x.Q(x)) \implies \exists x. (P(x) \lor Q(x))$.\\
+	      \underline{Case I. } $\exists x. (P(x) \lor Q(x)) \implies ((\exists x.P(x)) \lor (\exists x.Q(x))$\\
+	      If either $P(x)$ or $Q(x)$ is true, then there exists an $x$ such that $P(x)$ is true or there exists an $x$ such that $Q(x)$ is true.\\
+	      \underline{Case II. } $((\exists x.P(x)) \lor (\exists x.Q(x)) \implies \exists x. (P(x) \lor Q(x))$\\
+	      If there exists an $x$ such that $P(x)$ is true or there exists an $x$ such that $Q(x)$ is true, then there exists an $x$ such that $P(x)$ or $Q(x)$ is true.\\
+	      \\
+	      Hence, $\exists x. (P(x) \lor Q(x)) \iff ((\exists x.P(x)) \lor (\exists x.Q(x))$ is true.\\
+
+
+
+
+\end{enumerate}
+
+
+\problem{8}{12}
+What happens to $\exists x.P(x) \rightarrow Q(x)$?\\
+\textbf{Solution. }
+$\exists x.P(x) \rightarrow Q(x)$\\
+Let's start by breaking down the statements.\\
+\emph{LHS. } $\exists x.P(x)$ means that ``There exists an $x$ such that $P(x)$ is true.'' \\ \emph{Example .} If $P(x)$ is ``$x$ is stupid'', then $\exists x.P(x)$ means that ``There exists an $x$ such that the person is stupid.''\bigskip
+\\
+\noindent \emph{RHS. } $Q(x)$ means that ``$Q(x)$ is true.''\\ \emph{Example .} If $Q(x)$ is ``$x$ is a genius'', then $Q(x)$ means that ``The person is a genius.''\\
+\\
+$\exists x.P(x) \rightarrow Q(x)$ means that ``If there exists an $x$ such that the person is stupid, then the person is a genius.'' So if $Q(x)$ is true, then $\exists x.P(x) \rightarrow Q(x)$ is true.\\
+\vspace{40pt}
+\\
+\noindent \textbf{Doubts. } Page 10-11 1.2.2
+\end{document}
+
+
