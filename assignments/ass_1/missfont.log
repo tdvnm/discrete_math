@@ -1,0 +1,12 @@
+mktextfm tcrm1000
+mktextfm tcrm1095
+mktextfm tcrm1095
+mktextfm tcrm1095
+mktextfm tcrm1095
+mktextfm tcrm1095
+mktextfm ecrm1095
+mktextfm ecrm1095
+mktextfm ectt1095
+mktexpk --mfmode / --bdpi 600 --mag 1+57/600 --dpi 657 ec-qbkb
+mktextfm ecrm1095
+mktextfm ectt1095

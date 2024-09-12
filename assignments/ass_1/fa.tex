@@ -1,0 +1,487 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper, margin=1in, headheight=14pt, includeheadfoot]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{ {/mnt/c/dev/} }
+\usepackage{amssymb, amsfonts, amsmath}
+\usepackage{multicol}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+\usepackage{lmodern}
+\usepackage[T1]{fontenc}
+\usepackage{ae}
+% \usepackage[T1]{fontenc}
+% \usepackage{tgbonum}
+% \usepackage{libertinus}
+
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhf[HLEO]{Shubhro Gupta}
+\fancyhf[HCEO]{\textsc{COMP201} - Assignment 1}
+\fancyhf[HREO]{Page \thepage \text{ }of \pageref{LastPage}}
+% \fancyhf[FREO]{Page \thepage\ of 5}
+\renewcommand\headrulewidth{0.4pt}
+
+
+\hfuzz=999pt
+\hbadness=99999  % or any number >=10000
+
+% \title{Comp 201 Assignment-1}
+% \author{Shubhro Gupta}
+% \date{Due Date: 7th September}
+
+\begin{document}
+
+% \maketitle
+
+\section{question}
+\emph{Given. } Murder occurred at a home of a father, mother, and their son and daughter. One member of the family murdered another member, the third member witnessed the
+crime, and the fourth member was an accomplice in the murder
+\begin{enumerate}
+    \item The accomplice and the witness were of opposite sex.
+\item The oldest member and the witness were of opposite sex.
+\item The youngest member and the victim were of opposite sex.
+\item The accomplice was older than the victim.
+\item The father was the oldest member.
+\item The murderer was not the youngest member. 
+\end{enumerate} \medskip
+\emph{Claim. }  \textbf{Mother was murderer}, accomplice was father, victim was son, and the witness was daughter. \medskip \\
+\emph{Proof. } From the given information, we know father is the oldest $\rightarrow$ witness is a female (2) $\rightarrow$ accomplice is a male (1). 
+The youngest member is not the murderer (6), neither a victim (3), nor the accomplice (4) $\rightarrow$ youngest member is the witness(F). Since witness is a female and the youngest member, it can't be the mother, so the daughter is the witness. And since the victim is opposite sex of the youngest member, the victim is a male.
+So far we know father was oldest, daughter was youngest, \textbf{and} witness is the daughter, accomplice is male, victim is male (filled the rest using intuitive reasoning). \\
+\begin{center}
+\begin{tabular}{|c | c | c |}
+ \hline
+ Person & Sex & Age  \\
+ \hline
+  Father & M & Oldest \\
+ \hline
+ Mother & F & Old \\
+ \hline
+ Son & M & Young  \\
+ \hline
+ Daughter & F & Youngest  \\
+ \hline
+\end{tabular}
+\quad
+\begin{tabular}{|c | c | c |}
+ \hline
+ Role & Sex & Age  \\
+ \hline
+Accomplice & M & ? \\
+ \hline
+ Murderer & F & ? \\
+ \hline
+ Victim & M & ?  \\
+ \hline
+ Witness & F & Youngest  \\
+ \hline
+\end{tabular}
+\end{center}
+~\\
+~\\
+Now, looking at the table, the only other murderer left is the mother (as accomplice and victim are male). And since the accomplice is older than the victim (4), the accomplice is the father and the victim is the son. \hfill $\square$
+
+
+
+
+
+
+
+
+\section{question}
+\emph{Given. } A pack of cards, with one side containing number, and the other containing a letter. A conjecture $C(x, y) := (x$ is vowel) $\rightarrow (y$ is an even number). A set $S := \{W, U, 4, 9\}$ of cards with one side showing. \medskip \\
+\emph{Claim. } The cards needed from $S$ are $\mathbf{U}$ and \textbf{9} to check if the conjecture $C$ holds. \medskip \\
+\emph{Proof. } $x \to y \equiv \neg x \lor y$, of which the negation is $x \land \neg y$. Hence $C(x,y)$ is false only when $x$ is true and $y$ is false. So we need a set of $x$ that are true and $y$ that are false to verify the conjecture. 
+\begin{itemize}
+\renewcommand{\labelitemi}{$\hookrightarrow$}
+    \item $W$ is not a vowel so $x$ is false, so we don't need this card. 
+    \item $U$ is a vowel so $x$ is true, so if we check the other side and $y$ turns out to be not even, this conjecture will not hold. So we need this card. 
+    \item $4$ is even so $y$ is true, so we don't need this card. 
+    \item $9$ is odd so $y$ is false, so if we check the other side and $x$ turns out to be vowel, this conjecture will not hold. So we need this card. 
+    \end{itemize}
+Thus the cards we need to check the conjecture are $\mathbf{U}$ and \textbf{9}.  \hfill $\square$
+
+
+
+
+
+
+
+
+
+
+
+
+\section{question}
+\textbf{3.1. } For every $n$, there exists an $m$ such that $n$ is greater than $m$. \\
+\text{  }   \qquad  \emph{Negation. } There exists an $n$ such that for all $m$, $n$ is less than or equal to $m$. \\
+\text{  }   \qquad  \emph{Using Quantifiers. } $\neg(\forall n. \exists m$ s.t. $n>m) \equiv {\exists n. \forall m}$ s.t. ${n \leq m}$ \medskip \\
+\textbf{3.2. } There exists an $m$ and there exists an $n$ such $m$ is not equal to $n$. \\
+\text{  }   \qquad  \emph{Negation. } For all $m$ and for all $n$, $m$ is equal to $n$. \\
+\text{  }   \qquad  \emph{Using Quantifiers. } $\neg(\exists m, n$ s.t. $m \neq n) \equiv \forall m, n. \, m = n$ \medskip \\
+\textbf{3.3. } For all $m$, if $m^2 > 0$ then $m > 0$. \\
+\text{  }   \qquad  \emph{Negation. } There exists an $m$ such that $m^2 > 0$ and $m \leq 0$.  \\
+\text{  }   \qquad  \emph{Using Quantifiers. } $\neg(\forall m. (m^2 > 0 ) \rightarrow (m > 0)) \equiv \exists m. (m^2 > 0) \land (m < 0)$ \medskip \\
+\textbf{3.4. } For all $a, b$ and $c$ in $S$, if $a R b$ and $b R c$ then $a R c$.\\
+\text{  }   \qquad  \emph{Negation. } There exists $a, b$ and $c$ in $S$ such that $a R b$ and $b R c$ but $a$ isn't related to $c$ \\
+\text{  }   \qquad  \emph{Using Quantifiers. }$\neg(\forall a, b, c \in S. (a R b) \land (b R c) \rightarrow (a R c)) \equiv \exists a, b, c \in S$ s.t.
+\\ \text{  } \qquad $(a R b) \land (b R c) \land \neg(a R c)$ 
+
+% \begin{enumerate}
+%     \item For every $n$, there exists an $m$ such that $n$ is greater than $m$. \\
+%         $\neg(\forall n. \exists m$ s.t. $n>m) \equiv \mathbf{\exists n. \forall m}$ s.t. $\mathbf{n \leq m}$
+%     \item There exists an $m$ and there exists an $n$ such $m$ is not equal to $n$. \\
+%         $\neg(\exists m, n$ s.t. $m \neq n) \equiv \forall m, n. \, m = n$
+%     \item For all $m$, if $m^2 > 0$ then $m > 0$. \\
+%         $\neg(\forall m. (m^2 > 0 ) \rightarrow (m > 0)) \equiv \exists m. (m^2 > 0) \land m < 0$ 
+%     \item For all $a, b$ and $c$ in $S$, if $a R b$ and $b R c$ then $a R c$.\\
+%         $\neg()$
+
+% \end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{question}
+\emph{Given. } We prove by induction that any \(n\) things are the same. For \(n = 0\) or \(n = 1\), this is trivial. Assume for some \(k\) that any \(k\) things are identical. Given \(k+1\) things \(x_1, x_2, \dots, x_{k+1}\), consider any subset of \(k\) elements. By the induction hypothesis, \(x_1 = x_2 = \cdots = x_k\) and \(x_2 = \cdots = x_k = x_{k+1}\). Therefore, \(x_1 = x_2 = \cdots = x_{k+1}\). By induction, all \(n\) things are identical for any \(n\). \medskip \\
+\emph{Claim. } The proof is incorrect. \medskip \\
+\emph{Proof. } The error in this proof lies in the induction step when transitioning from \(k\) to \(k+1\) elements. 
+The fallacy is in the assumption that the intersection of these two sets implies all $k+1$ things are the same. This assumption fails when $k=1, k+1=2$.
+
+For $k=1$, consider $x_1$ and $x_2$. The induction hypothesis tells us nothing about the relationship between $x_1$ and $x_2$ since each subset contains only one element (which is trivially the same as itself). Therefore, we cannot conclude that $x_1=x_2$.
+
+Thus, the wrong step is in assuming that the intersection of these subsets implies that all $k+1$ things are the same, without properly addressing the case when $k=1$. \hfill $\square$
+
+
+
+
+
+
+
+
+
+\section{question}
+\noindent \textbf{5.1. } \emph{Claim. } $f$ is bijective and $g$ is bijective $ \to f \circ g$ is bijective. \medskip \\
+\emph{Proof. } Let $x, y \in A, \text{ and  }f: A \to B$ and $g: B \to C$ be bijective functions. \\
+\textbf{Injective. } Let $f \circ g(x) = f \circ g(y)$. Then $f(g(x)) = f(g(y))$. Since $f$ is injective, $g(x) = g(y)$. Since $g$ is injective, $x = y$. Since $x, y \in A$ were arbitrary, $f \circ g$ is injective. \\
+\textbf{Surjective. } Let $y \in C$. Since $g$ is surjective, $\exists x \in B$ such that $g(x) = y$. Since $f$ is surjective, $\exists z \in A$ such that $f(z) = x$. Thus $f \circ g(z) = f(g(z)) = f(x) = y$. Thus $f \circ g$ is surjective. \\
+Since $f \circ g$ is both injective and surjective, $f \circ g$ is bijective. \hfill $\square$
+
+\vspace{15pt}
+
+\noindent \textbf{5.2. } \emph{Claim. } $f \circ f$ is injective $\to f$ is injective. \medskip \\
+\noindent \emph{Proof. } Let $x, y \in A$ and $f: A \to A$ (as we can not apply $f$ on $f$ if the domain and codomain are different). Suppose $f$ is not injective. Then $\exists x, y \in A$ such that $f(x) = f(y)$ but $x \neq y$. \\
+Given that $f(x) = f(y)$, we know that $f(f(x)) = f(f(y))$. Since $f \circ f$ is injective, $f(f(x)) = f(f(y)) \rightarrow x = y$, which is a contradiction to our assumption that $x \neq y$. Thus $f$ is injective. \hfill $\square$
+
+\vspace{15pt}
+
+\noindent \textbf{5.3. } \emph{Claim. } $f \circ f$ is surjective $\to f$ surjective. \medskip \\
+\noindent \emph{Proof. } Let $x, y \in A$, and $f: A \to A$.\\
+Since $f \circ f$ is surjective, $\forall y \in A, \exists x \in A$ such that $f(f(x)) = y$. And since $f: A \to A, f(x) \in A$, we know $f(f(x)) = y$. Thus $\forall y \in A, \exists x \in A$ such that $f(x) = y$. Therefore, $f$ is surjective. \hfill $\square$
+
+
+
+\vspace{15pt}
+
+\noindent \textbf{5.4. } \emph{Given. } $g \circ f$ is surjective $\to f$ is not necessarily surjective. \medskip \\
+\noindent \emph{Proof. } We can prove this using a counter-example. \\
+Let $A = \{1, 2\}$ and $B = \{1, 2, 3\}$, and $C = \{1, 2\}$. Let $f: A \to B$ be defined as $f(1) = 1, f(2) = 2$, and $g: B \to C$ be defined as $g(1) = 1, g(2) = 2, g(3) = 1$. Then $g \circ f$ is surjective, as $g \circ f: A \to C$ and each element in $A$ is mapped to an element in $C$. But $f$ is not surjective, as $\nexists x \in A$ such that $f(x) = 3$. \hfill $\square$
+
+
+
+
+
+
+
+
+
+
+
+
+\section{question}
+\emph{Given. } $f \circ g$ is bijective. \medskip \\
+\emph{Claim. } $f$ and $g$ are not necessarily bijective. \medskip \\
+\emph{Proof. } We can prove this using a counter-example. \\
+Let $A = \{1, 2\}$, $B = \{1, 2, 3\}$, and $C = \{1, 2\}$. Let $g: A \to B$ be defined as $g(1) = 1, g(2) = 2$, and $f: B \to C$ be defined as $f(1) = 1, f(2) = 2, f(3) = 1$. Then $f \circ g$ is bijective, as $f \circ g: A \to C$ and each element in $A$ is mapped to an element in $C$. But $g$ is not surjective as $\nexists x \in A$ such that $g(x) = 3$. And $f$ is not injective as $f(1) = f(3)$. \hfill $\square$
+
+
+
+
+
+\section{question}
+\textbf{7.1. } \emph{Claim. } Set difference operation is not associative, i.e., $(A \setminus B) \setminus C \neq A \setminus (B \setminus C), \; \forall A, B, C \subseteq \mathbb{N}$. \\
+\emph{Proof. }The set difference is defined as $A \setminus B = \{x \in A \mid x \notin B\}$.
+We can prove this using a counter-example, as there exists a set $A, B, C$ such that $(A \setminus B) \setminus C \neq A \setminus (B \setminus C)$. \\
+Let $A = \{1, 2, 3\}, B = \{2, 3\}, C = \{3\}$. Then $(A \setminus B) \setminus C = \{1\} \neq \{1, 3\} = A \setminus (B \setminus C)$. \hfill $\square$
+\vspace{15pt}
+
+\noindent \textbf{7.2. } \emph{Claim. } $\forall A, B, C, (A \setminus B) \setminus C = A \setminus (B \cup C)$. \medskip \\
+We can prove this by showing that $(A \setminus B) \setminus C \subseteq A \setminus (B \cup C)$ and $A \setminus (B \cup C) \subseteq (A \setminus B) \setminus C$. \smallskip \\
+\noindent $\Rightarrow$ $x \in (A \setminus B) \setminus C \subseteq x \in A \setminus (B \cup C)$. \\
+    Suppose $x \in (A \setminus B) \setminus C$.
+    By definition of set difference, $x \in (A \setminus B)$ and $x \notin C$.
+    From $x \in (A \setminus B)$, we have $x \in A$ and $x \notin B$.
+    Since $x \notin B$ and $x \notin C$, it follows that $x \notin (B \cup C)$.
+    Therefore, $x \in A$ and $x \notin (B \cup C)$.
+    Hence, $x \in A \setminus (B \cup C)$.
+\medskip
+
+\noindent $\Leftarrow$ $x \in A \setminus (B \cup C) \subseteq x \in (A \setminus B) \setminus C$.\\
+    Suppose $x \in A \setminus (B \cup C)$.
+    By definition of set difference, $x \in A$ and $x \notin (B \cup C)$.
+    Since $x \notin (B \cup C)$, it follows that $x \notin B$ and $x \notin C$.
+    Therefore, $x \in A$ and $x \notin B$.
+    Hence, $x \in (A \setminus B)$.
+    Now, since $x \in (A \setminus B)$ and $x \notin C$, it follows that $x \in (A \setminus B) \setminus C$. So, $A \setminus (B \cup C) \subseteq (A \setminus B) \setminus C$.
+\medskip \\
+Since $(A \setminus B) \setminus C \subseteq A \setminus (B \cup C)$ and $A \setminus (B \cup C) \subseteq (A \setminus B) \setminus C$, we have $(A \setminus B) \setminus C = A \setminus (B \cup C)$. \\ \text{ } \hfill $\square$
+
+
+
+
+
+
+
+\section{question} 
+\textbf{8.1 } \emph{Claim. } $(A \subset C) \land (B \subset C) \rightarrow (A \cup B \subset C)$\medskip \\
+\emph{Proof. } To prove this, we need to show that for any arbitrary element $x \in A \cup B$, $x \in C$. \\
+Since $x$ is in $A \cup B$, $x$ is either in $A$ or $B$ by definition. Taking the cases, we have
+\begin{itemize}
+\renewcommand{\labelitemi}{$\hookrightarrow$}
+    \item $x \in A$. Since $A \subset B$, $x \in B$. Since $B \subset C$, $x \in C$.
+    \item $x \in B$. Since $B \subset C$, $x \in C$.
+\end{itemize}
+Since in both the cases, any arbitrary element $x \in A \cup B$ is in $C$, $A \cup B \subset C$. \hfill $\square$
+
+
+\vspace{15pt}
+
+\noindent \textbf{8.2 } \emph{Claim. } $((P \rightarrow R)\land (Q \rightarrow R)) \rightarrow ((P \lor Q) \rightarrow R)$ is a tautology. \medskip \\
+\emph{Proof. } Using the proven equivalences $P \rightarrow R \equiv \neg P \lor R$  in (1) and De Morgan's law $(P \lor R) \land (Q \lor R) \equiv (P \land Q) \lor R$ in (2), we can derive the following
+\begin{align}
+   &  \, \, \, ((P \rightarrow R)\land (Q \rightarrow R)) \rightarrow ((P \lor Q) \rightarrow R) \\
+    & \equiv  ((\neg P \lor R) \land (\neg Q \lor R)) \rightarrow (\neg(P \lor Q) \lor R) \\
+    & \equiv ((\neg P \land \neg Q) \lor R) \rightarrow ((\neg P \land \neg Q) \lor R) 
+\end{align}
+which is of the form $P \rightarrow P$ which is always true (\emph{proved in Bonus Assignment page 6)}. \hfill $\square$
+
+
+
+
+
+
+
+
+
+
+
+\section{question}
+\emph{Given. } An integer $n \neq 0 \; divides \; k$ if there is a natural number $q$ such that $k = n \times q$. If $n = 0$, it only divides 0. \medskip \\
+\emph{Claim. } $divides$ is a pre-order on $\mathbb{Z} \times \mathbb{Z}$
+\medskip \\
+\emph{Proof. } We can define the relation $divides$ as $a \; divides \; b \iff b = a \times q$ for some $q \in \mathbb{N}$. We need to show that $divides$ is reflexive, antisymmetric, and transitive. \\
+\textbf{Reflexive. } For any arbitrary $a \in \mathbb{Z}$, $a \; divides \; a$ because $a = a \times 1$ and $1 \in \mathbb{N}$. Since $a$ was arbitrary, $\forall a \in \mathbb{Z}, a \; divides \; a$ is true. \\
+\textbf{Symmetric. } For any arbitrary $a, b \in \mathbb{Z}$, if $a \; divides \; b$, then $b = a \times q$ for some $q \in \mathbb{N}$. This implies $a = b \times \frac{1}{q}$, which is not true since $\frac{1}{q} \notin \mathbb{N}$ unless $a=b$. Since $a, b$ were arbitrary, $\forall a, b \in \mathbb{Z}, a \; divides \; b \rightarrow b \; divides \; a$ is false. \\
+\textbf{Transitive. } For any arbitrary $a, b, c \in \mathbb{Z}$, if $a \; divides \; b$ and $b \; divides \; c$, then $b = a \times q_1$ and $c = b \times q_2$ for some $q_1, q_2 \in \mathbb{N}$. Substituting $b$ in $c = b \times q_2$, we get $c = a \times q_1 \times q_2 \to a \; divides \; c$. Since $q_1 \in \mathbb{N}, q_2 \in \mathbb{N}, q_1 \times q_2 \in \mathbb{N}$. Since $a, b, c$ were arbitrary, $\forall a, b, c \in \mathbb{Z}, a \; divides \; b \land b \; divides \; c \rightarrow a \; divides \; c$ is true. \\
+Since $divides$ is reflexive, antisymmetric, and transitive, $divides$ is a pre-order on $\mathbb{Z} \times \mathbb{Z}$. \hfill $\square$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{question}
+\emph{Given. } 2 programmers wrote code to calculate how many people have a disease after $n$ days. The pandemic affects 1 person on the first day, and there after
+each person spreads it to a other people, where $a$ is the average rate of
+transmission. Thus the number of people affected by it on the $n^{th}$ day
+is the number of people affected by it on $(n - 1)^{th} \times a$.  \medskip \\
+% \begin{multicols}{2}
+% \noindent 
+% \textbf{Programmer 1}
+% \begin{verbatim}
+% fun pandemic(num-days :: Number,  
+% rate :: Number) -> Number:
+%     if num-days == 0:
+%         1
+%     else:
+%         pandemic(num-days - 1, rate) * rate
+%     end
+% end 
+% \end{verbatim}
+% \columnbreak
+% \textbf{Programmer 2}
+% \begin{verbatim}
+% fun altpandemic(num-days :: Number, 
+% rate :: Number) -> Number:
+%     num-expt(rate, num-days)
+% end
+% \end{verbatim}
+% \end{multicols}
+\noindent \emph{Converting code to mathematical statements. } \\
+\textbf{Programmer 1} uses a recursive function to calculate the spread on $n^{th}$ day. Here \texttt{if num-days == 0 then 1} represents the base case, and \texttt{pandemic(num-days - 1, rate) * rate} the recursive step. Mathematically, the function \texttt{pandemic}s  can be described as $$
+R(n, a) =\begin{cases}
+                1 & \text{if $n$ = 0} \\
+                R(n-1, a) \times a & \text{if } n > 0
+		 \end{cases}
+$$
+\\
+\noindent \textbf{Programmer 2} does not use a recursive function, and \texttt{num-expt(rate, num-days)} just represents $E(n, a) = a^n$. 
+\medskip \\
+\emph{Claim. } $\forall (n, a) \in \mathbb{N}, R(n, a) = E(n, a)$ \medskip \\
+\emph{Proof. } We need to prove that the functions $R(n, a)$ and $E(n, a)$ are equal for all $n, a \in \mathbb{N}$. We can prove this using induction. \\
+\textbf{Base Case. } For $n = 0$, $R(0, a) = 1$ and $E(0, a) = a^0 = 1$. \\
+\textbf{Inductive Hypothesis. } Assume $n=k, R(k, a) = E(k, a)$ for some $k \in \mathbb{N}$. \\
+\textbf{Inductive Step. } We need to show that $R(k+1, a) = E(k+1, a)$. 
+\begin{align*}
+    R(k+1, a) &= R((k+1)-1, a) \times a \\
+    &= R(k, a) \times a \\
+    &= E(k, a) \times a \\
+    &= a^k \times a \\
+    &= a^{k+1} \\
+    &= E(k+1, a)
+\end{align*}
+Since $R(k+1, a) = E(k+1, a)$, by induction, $R(n, a) = E(n, a)$ for all $n, a \in \mathbb{N}$. \hfill $\square$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\section{question}
+\emph{To Write. } A bijective map from $\mathbb{N} \to \mathbb{Z}.$ \medskip \\
+% \emph{Claim} A bijective map from $\mathbb{N}$ to $\mathbb{Z}.$ \medskip \\
+\emph{Solution. } Let $f:\mathbb{N} \to \mathbb{Z}$ be defined as $f(n) = \lceil{\frac{n}{2}}\rceil \times (-1)^n$. \\
+Which gives us the following mapping $$
+\lceil{\frac{n}{2}\rceil} \times (-1)^n =\begin{cases}
+    \frac{n}{2} & \text{if $n$ is even} \\
+    -\frac{n+1}{2} & \text{if $n$ is odd}
+		 \end{cases}
+$$
+% \emph{To Prove. } $f(n)$ is bijective. \medskip \\
+% \emph{Proof. } To prove $f(n)$ is bijective, we need to show that $f(n)$ is both injective and surjective.\\
+% \\
+% \textbf{Injective. } A function is injective if $f(a) = f(b) \rightarrow a = b$, and our function has 2 cases, where $n$ is even and odd, so we need to check for all the cases.\\
+% \underline{Case 1.} \, \, $a$ and $b$ are both even. Then $f(a) = f(b) \rightarrow \frac{a}{2} = \frac{b}{2} \rightarrow a = b$. \\
+% \underline{Case 2.} \, \, $a$ and $b$ are both odd. Then $f(a) = f(b) \rightarrow -\frac{a+1}{2} = -\frac{b+1}{2} \rightarrow a = b$. \\
+% \underline{Case 3.} \, \, $a$ is even and $b$ is odd, which is not possible, as $f(a)$ is positive and $f(b)$ is negative, but $a$ and $b$ are both positive. \\
+% \underline{Case 4.} \, \, $a$ is odd and $b$ is even, which is not possible, as $f(a)$ is negative and $f(b)$ is positive, but $a$ and $b$ are both positive. \\
+% Since $f(a) = f(b) \rightarrow a = b$ for all $a, b \in \mathbb{N}$, $f(n)$ is injective. \hfill $\square$ \\
+% \\
+% \noindent \textbf{Surjective. } Our function is surjective if $\forall y \in \mathbb{Z}, \exists x \in \mathbb{N}$ such that $f(x) = y$. \\
+% \underline{Case 1.} \, \, $y$ is positive. Then $f(2y) = \frac{2y}{2} = y$. \\
+% \underline{Case 2.} \, \, $y$ is negative. Then $f(-2y-1) = -\frac{-2y-1+1}{2} = y$. \\
+% \underline{Case 3.} \, \, $y$ is 0. Then $f(1) = 0$. \\
+% Since $\forall y \in \mathbb{Z}, \exists x \in \mathbb{N}$ such that $f(x) = y$, $f(n)$ is surjective. \hfill $\square$ \\
+% \\
+% Since $f(n)$ is both injective and surjective, $f(n)$ is bijective. \hfill $\square$
+
+
+
+
+
+\section{question}
+\emph{Given. } A pre-order on a set $S$, we define a relation $\equiv$ on $S$ as $x \equiv y\leftrightarrow x \leq y \lor y \leq x$. \medskip \\
+\emph{Claim. } $\equiv$ is an equivalence relation on $S$. \medskip \\
+\emph{Proof. } \\
+\textbf{Reflexive. } The relation is reflexive if for any arbitary \( x \in S \), \( x \equiv x \).
+Since \( \leq \) is a pre-order, it is reflexive. Since $x$ was arbitrary, \( \forall x \in S \)\, $x \leq x \rightarrow x \equiv x$. 
+\\
+\textbf{Symmetric. } The relation is symmetric if for any arbitrary $x,y \in S$, if $x \equiv y$ then $y \equiv x$. By definition, $x \equiv y$ means either $x \leq y$ or $y \leq x$. These two cases are symmetric
+\begin{itemize}
+\renewcommand{\labelitemi}{$\hookrightarrow$}
+    \item $x \leq y$. Either $x \leq y$ or $y \leq x$ is true, $y \equiv x$
+    \item $y \leq x$. Either $x \leq y$ or $y \leq x$ is true, $y \equiv x$
+\end{itemize}
+Since $x, y$ was arbitrary, $\forall x, y \in S, x \equiv y \rightarrow y \equiv x$, and $\equiv$ is symmetric. \\
+\textbf{Transitive. } The relation is transitive if for every \( x, y, z \in S \), if \( x \equiv y \) and \( y \equiv z \), then \( x \equiv z \). Suppose \( x \equiv y \) and \( y \equiv z \). We need to show that \( x \equiv z \). This means we need to show either \( x \leq z \) or \( z \leq x \).
+There are four possible cases to consider:
+
+\begin{itemize}
+    \renewcommand{\labelitemi}{$\hookrightarrow$}
+    \item \( x \leq y \) and \( y \leq z \).
+        Since \( \leq \) is transitive, \( x \leq y \) and \( y \leq z \) imply \( x \leq z \). Hence, \( x \equiv z \).
+
+    \item \( x \leq y \) and \( z \leq y \).  Since \( z \leq y \) and \( y \leq x \) by reflexivity, we have \( z \leq x \). Hence, \( x \equiv z \).
+
+    \item \( y \leq x \) and \( y \leq z \). By similar reasoning as in case 2, \( z \leq y \) and \( y \leq x \) imply \( z \leq x \). Hence, \( x \equiv z \).
+    
+    \item \( y \leq x \) and \( z \leq y \). Since \( \leq \) is transitive, \( z \leq y \) and \( y \leq x \) imply \( z \leq x \). Hence, \( x \equiv z \).
+\end{itemize}
+In all cases, we see that \( x \equiv z \), and therefore \( \equiv \) is transitive. \\
+Since \( \equiv \) is reflexive, symmetric, and transitive, it is an equivalence relation on \( S \). \hfill \( \square \)
+
+
+
+
+
+
+\section{question}
+\emph{Given. } A partial order $\leq$ on a set $S$, we define a relation $\equiv$ on $S$ as $x \equiv y \leftrightarrow x \leq y \land y \leq x$. \medskip \\
+\emph{Claim. } If $\leq$ is a partial order, then the equivalence classes of $\equiv$ are the singleton sets containing each element of $S$.  \medskip \\
+\emph{Proof. }
+The equivalence classes of the relation $\equiv$ are the sets of elements that are equivalent to each other under $\equiv$. Given that $\leq$ is now a partial order, the relation $\leq$ effectively becomes $ x \equiv y \leftrightarrow x = y.$
+
+In a partial order, the only way for $x \equiv y$ to hold is if $x=y$, because the anti-symmetry condition ensures that $x \leq y$ and $y \leq x \rightarrow x=y$.
+
+Thus, under a partial order, each equivalence class of $\equiv$ contains exactly one element. In other words, the equivalence classes are the singleton sets containing each element of $S$.
+If $\leq$ is a partial order, the equivalence classes associated with $\equiv$ are
+$
+\{ \{x\} \mid x \in S \}
+$. 
+Each element in $S$ forms its own equivalence class. \hfill $\square$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+\end{document}
