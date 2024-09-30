@@ -1,0 +1,144 @@
+\documentclass[11pt]{article}
+\usepackage[letterpaper, margin=1in, headheight=14pt, includeheadfoot]{geometry}
+\usepackage{graphicx} % Required for inserting images
+\graphicspath{ {/mnt/c/dev/} }
+\usepackage{amssymb, amsfonts, amsmath}
+\usepackage{multicol}
+\usepackage{geometry}
+\usepackage{tikz}
+\usetikzlibrary{arrows,positioning,shapes,fit,calc}
+% \usepackage{lmodern}
+\usepackage[T1]{fontenc}
+% \usepackage{ae}
+% \usepackage{tgbonum}
+% \usepackage{times}
+
+
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+
+% \fancyhf{}
+\fancyfoot{} % clear all footer fields
+\fancyhf[HLEO]{\textsc{shubhro gupta}}
+\fancyhf[HCEO]{\textsc{comp201 - assignment 2}}
+\fancyhf[HREO]{\emph{Page} \thepage \text{ }\emph{of} \pageref{LastPage}}
+% \fancyhf[FREO]{Page \thepage\ of 5}
+\renewcommand\headrulewidth{0pt}
+
+
+\hfuzz=999pt
+\hbadness=99999  % or any number >=10000
+
+% \title{Comp 201 Assignment-1}
+% \author{Shubhro Gupta}
+% \date{Due Date: 7th September}
+
+\begin{document}
+
+% \maketitle
+
+
+
+
+\section{Problem}
+\emph{To Find. } 5-digit numbers such that either all their digits are even or all their digits are odd. \medskip \\
+\emph{Claim. } The number of 5-digit numbers such that either all their digits are even or all their digits are odd is $5 \times 5^4$. \medskip \\
+\emph{Proof. } Let $E$ be the set of 5-digit numbers such that all their digits are even and $O$ be the set of 5-digit numbers such that all their digits are odd.
+
+
+
+
+
+\section{Problem}
+\emph{Given. } A computer program takes as input binary codes of 5 bits and returns binary sequences of 4 bits. For every input, the program might either return an output or go into an infinite loop. We call a 5-bit input \emph{valid} if the program does not hang. Two programs are regarded as the same if they have the same set of valid inputs and return the same output for each valid input.
+
+\subsection{Problem}
+\emph{To Find. } The mathematical model of the above.
+
+\subsection{Problem}
+\emph{To Find. } The number of different programs that can be implemented. \medskip \\
+\emph{Claim. } The number of different programs that can be implemented is $2^{16}$. \medskip \\
+\emph{Proof. } Let $P$ be the set of all programs that can be implemented. Let $V$ be the set of all valid inputs. Let $O$ be the set of all outputs. Let $P_v$ be the set of all programs that return output for a valid input.
+
+
+
+
+\section{Problem}
+\emph{Given. } In a class of 40, 18 are into chess, 23 are into crosswords, and unknown $n$ are into quizzing. 7 are into both chess and quizzing. 9 are into both chess and quizzing. 4 students are into all the activities. \medskip \\
+\emph{Claim. } The number of students into quizzing is 12.
+
+
+
+
+
+
+\section{Problem}
+\emph{To Find. } The number of ways in which 4 couples can be seated in a row of 8 seats if each couple wants to be seated together.
+
+
+
+
+
+\section{Problem}
+\emph{To Prove. } The number of solutions of $x_1 + x_2 + \cdots + x_k = n$ in non-negative integers is $C^{n+k−1}_n$.
+
+
+
+
+
+\section{Problem}
+\emph{Given. } A computer network with 10 distinct computers is set up such that each computer is connected to another computer. I want to determine the optimal way of sending a packet of information through the network so that it reaches every computer exactly once and returns to the starting computer.
+\medskip \\
+\emph{To Find. } The number of ways in which the packet can be sent.
+
+
+
+\section{Problem} \emph{Done in Question 4.} \medskip \\
+
+
+
+
+\section{Problem} \emph{To Prove. } That 2 points located on the circumference of a circle with a diameter of 6 cm, there exist two points with a distance of less than 2 cm between them.
+
+
+
+
+
+
+\section{Problem} \emph{To Prove. } That $\sqrt{2}$ is irrational following these steps.
+\begin{enumerate}
+	\item Show that every rational number can be written as $\frac{p}{q}$, where p and q are relatively prime.
+	\item Assume $\sqrt{2} = \frac{p}{q}$, where $p$ and $q$ are relatively prime, and prove that $p^2$ is even.
+	\item Show that if $n^2$ is even, then $n$ is even.
+	\item Use this to show that $p$ and $q$ are even, leading to a contradiction.
+\end{enumerate}
+
+
+
+
+
+\section{Problem} \emph{To Prove. } Every prime number greater than 3 is congruent to either 1 \emph{mod 6} or 5 \emph{mod 6}. \medskip \\
+
+
+\section{Problem} \emph{To Prove. } If $n + 1$ distinct numbers are randomly selected, there exist two numbers whose remainder when divided by n is the same. \medskip \\
+
+
+\section{Problem} \emph{To Prove. } Using modular arithmetic that $a + b$ is even, if $a$ and $b$ are odd integers. \medskip \\
+
+
+
+
+\section{Problem}
+\emph{To Find. } The digit at units place of $3^{101}$. \medskip \\
+\emph{Claim. } The digit at units place of $3^{101}$ is 7. \medskip \\
+\emph{Proof. } Let $n$ be the digit at units place of $3^{101}$. We know that $3^4 = 81$, and $3^{4n} = 1$, so $3^{100} = 1$. Therefore, $3^{101} = 3$. \medskip \\
+
+
+
+
+
+\section{Problem}
+\emph{To Write. } The PyRet code for the Euclidean algorithm and compute the greatest common divisor (GCD) of 124 and 284 using this algorithm by hand.
+
+\end{document}
